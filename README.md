@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PowerOutage Tracker
 
 A production-ready full-stack web application for tracking and managing power outages.
@@ -336,3 +337,7 @@ ISC
 ## Support
 
 For issues and questions, please open an issue on the repository.
+=======
+# power-outage-management-system
+Web-based electricity management system for monitoring and handling power outages and distribution
+>>>>>>> 102609cee88630bc957130f45e8fa5ce0ec0cc76
