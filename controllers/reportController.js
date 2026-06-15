@@ -4,19 +4,19 @@ const ResponseHandler = require('../utils/response');
 class ReportController {
     static async createReport(req, res) {
         try {
-            const { location, severity, outage_type, description } = req.body;
-
+const { location, severity, outage_type, description, lat, lng } = req.body;
             if (!location || !severity || !outage_type) {
                 return ResponseHandler.error(res, 'Location, severity, and outage type are required', 400);
             }
-
-            const reportData = {
-                user_id: req.user.id,
-                location,
-                severity,
-                outage_type,
-                description
-            };
+                    const reportData = {
+                        user_id: req.user.id,
+                        location,
+                        severity,
+                        outage_type,
+                        description,
+                        lat,
+                        lng
+                    };
 
             const report = await ReportService.createReport(reportData);
             ResponseHandler.success(res, 'Report created successfully', report, 201);
