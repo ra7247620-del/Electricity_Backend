@@ -2,11 +2,11 @@ const pool = require('../config/database');
 
 class OutageReport {
     static async create(reportData) {
-        const { user_id, location, severity, outage_type, description } = reportData;
+        const { user_id, location, severity, outage_type, description, latitude, longitude } = reportData;
         
         const [result] = await pool.execute(
-            'INSERT INTO outage_reports (user_id, location, severity, outage_type, description) VALUES (?, ?, ?, ?, ?)',
-            [user_id, location, severity, outage_type, description]
+            'INSERT INTO outage_reports (user_id, location, severity, outage_type, description, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [user_id, location, severity, outage_type, description, latitude || null, longitude || null]
         );
         
         return result.insertId;

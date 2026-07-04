@@ -4,13 +4,13 @@ const ResponseHandler = require('../utils/response');
 class AuthController {
     static async register(req, res) {
         try {
-            const { username, email, password } = req.body;
+            const { name, email, password } = req.body;
 
-            if (!username || !email || !password) {
-                return ResponseHandler.error(res, 'All fields are required', 400);
+            if (!name || !email || !password) {
+                return ResponseHandler.error(res, 'Name, email, and password are required', 400);
             }
 
-            const user = await AuthService.register({ username, email, password });
+            const user = await AuthService.register({ name, email, password });
             ResponseHandler.success(res, 'User registered successfully', {
                 id: user.id,
                 username: user.username,

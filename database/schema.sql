@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS outage_reports (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     location VARCHAR(255) NOT NULL,
+    latitude DOUBLE,
+    longitude DOUBLE,
     severity ENUM('low', 'medium', 'high', 'critical') NOT NULL,
     outage_type ENUM('power_outage', 'voltage_fluctuation', 'partial_outage', 'other') NOT NULL,
     description TEXT,
