@@ -15,25 +15,18 @@ required', 400);
             }
             const reportData = {
                 user_id: req.user.id,
-                location: location || 
-address || 'Unknown location',
-                severity: severity || 
-'medium',
-                outage_type: outage_type || 
-'power_outage',
-                description,
-                latitude,
-                longitude,
-                address
+                location: location || address || 'Unknown location',
+                severity: severity || 'medium',
+                outage_type: outage_type || 'power_outage',
+                description: description,
+                latitude: latitude,
+                longitude: longitude,
+                address: address,
             };
-            const report = await 
-ReportService.createReport(reportData);
-            ResponseHandler.success(res, 
-'Report created successfully', report, 
-201);
+            const report = await ReportService.createReport(reportData);
+            ResponseHandler.success(res, 'Report created successfully', report, 201);
         } catch (error) {
-            ResponseHandler.error(res, 
-error.message, 500);
+            ResponseHandler.error(res, error.message, 500);
         }
     }
     static async getMyReports(req, res) {
