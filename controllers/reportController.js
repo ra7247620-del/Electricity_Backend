@@ -5,18 +5,6 @@ require('../utils/response');
 class ReportController {
     static async createReport(req, res) {
         try {
-            // 
-✅ اﻟﻔﻼﺗﺮ ﺑﻴﺒﻌﺖ
-
-latitude/longitude/description/address وﻻ lat/lng ﻣﺶ( //           
- 
-location/severity/outage_type) ﻓﺒﻨﻘﺮاﻫﻢ
-            // ﻗﻴﻢ اﻓﺘﺮاﺿﻴ
-ﺔ.ﻣﺶ ﻣﺘﺒﻌﺘﺔ
-
-            //  ﺑﻨﻔﺲ اﻷﺳﻤﺎء اﻟﻠﻲ ﺑﻴﺒﻌﺘﻬﺎ اﻟﺘﻄﺒﻴﻖ، وﺑﻨﺤ
-ﻂ ﻟﻠﺤﻘﻮل اﻟﻤﻄﻠﻮﺑﺔ ﻓﻲ ﻗﺎﻋﺪة اﻟﺒﻴﺎﻧﺎت ﻟ
-ﻮ
             const { latitude, longitude, 
 description, address, location, severity, 
 outage_type } = req.body;
@@ -28,16 +16,16 @@ required', 400);
             const reportData = {
                 user_id: req.user.id,
                 location: location || 
-address || 'ﻏﻴﺮ ﻣﺤﺪد',
+address || 'Unknown location',
                 severity: severity || 
 'medium',
-'power_outage',
-            };
                 outage_type: outage_type || 
+'power_outage',
                 description,
                 latitude,
                 longitude,
                 address
+            };
             const report = await 
 ReportService.createReport(reportData);
             ResponseHandler.success(res, 
